@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Leaderboard Screen -->
+        <div class="screen active">
+            <div class="welcome-content">
+                <div class="leaderboard-header">
+                    <div class="logo-container">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h1 class="welcome-title">🏆 Leaderboard</h1>
+                    <p class="welcome-subtitle">Top 10 Pemain Terbaik</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="leaderboardCategory">Filter Kategori</label>
+                    <select id="leaderboardCategory" class="form-select">
+                        <option value="all">Semua Kategori</option>
+                        <option value="pengetahuan-umum">🌍 Pengetahuan Umum</option>
+                        <option value="film">🎬 Film & Sinema</option>
+                        <option value="musik">🎵 Musik & Lagu</option>
+                        <option value="kuliner">🍜 Kuliner & Makanan</option>
+                        <option value="geografi">🗺️ Geografi & Bendera</option>
+                        <option value="hewan">🐾 Hewan & Satwa</option>
+                        <option value="olahraga">⚽ Olahraga</option>
+                        <option value="bahasa">💬 Bahasa & Idiom</option>
+                    </select>
+                </div>
+
+                <div id="leaderboardList" class="leaderboard-list">
+                    <!-- Leaderboard items will be inserted here by JavaScript -->
+                </div>
+
+                <button id="backToQuizBtn" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Kembali ke Quiz</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="leaderboard.js"></script>
+</body>
+
+</html>

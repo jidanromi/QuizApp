@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Pengetahuan Umum - Test Your Knowledge</title>
+    <meta name="description" content="Uji pengetahuan umum Anda dengan quiz interaktif yang menarik dan edukatif">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="screen active">
+            <div class="welcome-content">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Color Theme Selector -->
+                <div class="theme-selector">
+                    <button type="button" class="theme-btn" data-theme="purple" title="Ungu">
+                        <span class="theme-color"
+                            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></span>
+                    </button>
+                    <button type="button" class="theme-btn" data-theme="blue" title="Biru">
+                        <span class="theme-color"
+                            style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></span>
+                    </button>
+                    <button type="button" class="theme-btn" data-theme="green" title="Hijau">
+                        <span class="theme-color"
+                            style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);"></span>
+                    </button>
+                    <button type="button" class="theme-btn" data-theme="red" title="Merah">
+                        <span class="theme-color"
+                            style="background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);"></span>
+                    </button>
+                    <button type="button" class="theme-btn" data-theme="orange" title="Oranye">
+                        <span class="theme-color"
+                            style="background: linear-gradient(135deg, #f46b45 0%, #eea849 100%);"></span>
+                    </button>
+                    <button type="button" class="theme-btn" data-theme="pink" title="Pink">
+                        <span class="theme-color"
+                            style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></span>
+                    </button>
+                </div>
+
+                <h1 class="welcome-title">Quiz Pengetahuan Umum</h1>
+                <p class="welcome-subtitle">Uji pengetahuan Anda dengan 10 pertanyaan menarik!</p>
+
+                <form id="userForm" class="user-form">
+                    <div class="form-group">
+                        <label for="userName">Nama Lengkap</label>
+                        <input type="text" id="userName" placeholder="Masukkan nama Anda" required autocomplete="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userAge">Umur</label>
+                        <input type="number" id="userAge" placeholder="Masukkan umur Anda" min="5" max="120" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quizCategory">Kategori Quiz</label>
+                        <select id="quizCategory" class="form-select">
+                            <option value="pengetahuan-umum">🌍 Pengetahuan Umum</option>
+                            <option value="film">🎬 Film & Sinema</option>
+                            <option value="musik">🎵 Musik & Lagu</option>
+                            <option value="kuliner">🍜 Kuliner & Makanan</option>
+                            <option value="geografi">🗺️ Geografi & Bendera</option>
+                            <option value="hewan">🐾 Hewan & Satwa</option>
+                            <option value="olahraga">⚽ Olahraga</option>
+                            <option value="bahasa">💬 Bahasa & Idiom</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="difficulty">Tingkat Kesulitan</label>
+                        <select id="difficulty" class="form-select">
+                            <option value="mudah">Mudah (15 detik/soal)</option>
+                            <option value="sedang" selected>Sedang (10 detik/soal)</option>
+                            <option value="sulit">Sulit (7 detik/soal)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="toggle-group">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="timerToggle" checked>
+                                <span class="toggle-text">Aktifkan Timer</span>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox" id="soundToggle" checked>
+                                <span class="toggle-text">Aktifkan Suara</span>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span>Mulai Quiz</span>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="screen">
+            <div class="quiz-header">
+                <div class="header-top">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="user-details">
+                            <span id="displayName" class="user-name"></span>
+                            <span id="displayAge" class="user-age"></span>
+                        </div>
+                    </div>
+
+                    <div class="header-controls">
+                        <div id="timerDisplay" class="timer-display" style="display: none;">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <span id="timeLeft">10</span>
+                        </div>
+                        <button id="darkModeToggle" class="icon-btn" title="Toggle Dark Mode">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quiz-progress">
+                    <div class="progress-info">
+                        <span class="progress-text">Pertanyaan <span id="currentQuestion">1</span> dari <span
+                                id="totalQuestions">10</span></span>
+                        <div class="score-group">
+                            <span id="streakDisplay" class="streak-display" style="display: none;">
+                                🔥 <span id="streakCount">0</span>
+                            </span>
+                            <span class="score-text">Skor: <span id="currentScore">0</span></span>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="lifelines">
+                    <button id="fiftyFiftyBtn" class="lifeline-btn" title="Hapus 2 jawaban salah">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>50:50</span>
+                    </button>
+                    <button id="skipBtn" class="lifeline-btn" title="Lewati pertanyaan">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 4L19 12L5 20V4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M19 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <span>Skip</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="quiz-content">
+                <div class="question-card">
+                    <div class="question-number">Pertanyaan <span id="questionNum">1</span></div>
+                    <h2 id="questionText" class="question-text"></h2>
+
+                    <div id="answersContainer" class="answers-container"></div>
+                </div>
+            </div>
+
+            <div class="quiz-footer">
+                <button id="nextBtn" class="btn btn-secondary" style="display: none;">
+                    <span>Pertanyaan Berikutnya</span>
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="resultScreen" class="screen">
+            <div class="result-content">
+                <div class="result-icon" id="resultIcon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <h1 class="result-title" id="resultTitle">Selamat!</h1>
+                <p class="result-message" id="resultMessage"></p>
+
+                <div class="result-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="stat-value" id="correctAnswers">0</div>
+                        <div class="stat-label">Jawaban Benar</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="stat-value" id="wrongAnswers">0</div>
+                        <div class="stat-label">Jawaban Salah</div>
+                    </div>
+
+                    <div class="stat-card highlight">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="stat-value" id="finalScore">0</div>
+                        <div class="stat-label">Skor Akhir</div>
+                    </div>
+                </div>
+
+                <div id="highScoreDisplay" class="high-score-display" style="display: none;">
+                    <div class="high-score-badge">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z"
+                                stroke="currentColor" stroke-width="2" />
+                            <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>🎉 Skor Tertinggi Baru!</span>
+                    </div>
+                </div>
+
+                <div id="achievementsDisplay" class="achievements-display" style="display: none;">
+                    <h3 class="achievements-title">Pencapaian Baru! 🏆</h3>
+                    <div id="achievementsList" class="achievements-list"></div>
+                </div>
+                <div class="result-actions">
+                    <button id="retryBtn" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M23 20V14H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M20.49 9C19.9828 7.56678 19.1209 6.28536 17.9845 5.27542C16.8482 4.26548 15.4745 3.55976 13.9917 3.22426C12.5089 2.88875 10.9652 2.93434 9.50481 3.35677C8.04437 3.77921 6.71475 4.56471 5.64 5.64L1 10M23 14L18.36 18.36C17.2853 19.4353 15.9556 20.2208 14.4952 20.6432C13.0348 21.0657 11.4911 21.1112 10.0083 20.7757C8.52547 20.4402 7.1518 19.7345 6.01547 18.7246C4.87913 17.7146 4.01717 16.4332 3.51 15"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>Coba Lagi</span>
+                    </button>
+
+                    <button id="viewLeaderboardBtn" class="btn btn-secondary"
+                        onclick="window.location.href='leaderboard.html'">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>Lihat Leaderboard</span>
+                    </button>
+
+                    <button id="shareScoreBtn" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 6.65685 16.3431 8 18 8Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M18 22C19.6569 22 21 20.6569 21 19C21 17.3431 19.6569 16 18 16C16.3431 16 15 17.3431 15 19C15 20.6569 16.3431 22 18 22Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M8.59 13.51L15.42 17.49" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M15.41 6.51L8.59 10.49" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>Share Skor</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Load Question Files -->
+    <script src="questions/pengetahuan-umum.js"></script>
+    <script src="questions/film.js"></script>
+    <script src="questions/musik.js"></script>
+    <script src="questions/kuliner.js"></script>
+    <script src="questions/geografi.js"></script>
+    <script src="questions/hewan.js"></script>
+    <script src="questions/olahraga.js"></script>
+    <script src="questions/bahasa.js"></script>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
